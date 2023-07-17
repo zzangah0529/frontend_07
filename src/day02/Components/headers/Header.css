@@ -1,0 +1,16 @@
+.header-layout{
+    background-color: pink;
+    padding: 10px;
+}
+
+.header-container{
+    display: flex;
+    width: 1200px; 
+    margin:  auto ;
+    justify-content: space-between; 
+}
+
+.header-container h1{
+    display: flex;
+    align-items: center;
+}

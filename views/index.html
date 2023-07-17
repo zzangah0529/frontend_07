@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>index</h1>
+    <div class="log">
+        <span></span>
+        <button class="logout">로그아웃</button>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', ()=>{
+            const log = document.querySelector(".log");
+            
+            console.log( document.cookie );
+            // cookie-parser가 처리하도록 만들어줘야 하고 
+            // fetch 
+            if( !document.cookie.includes('username') ){
+                log.style.display = 'none';
+                //location.href = 'http://localhost:3000/login'
+            }else{
+                log.style.display = 'block';
+                document.querySelector(".log>span").innerHTML = document.cookie;
+            }
+        })
+
+        // logout 할 수 있으므로 
+        document.querySelector('.logout').addEventListener('click', ()=>{
+            fetch('http://localhost:3000/logout')
+            .then(res => res.json())
+            .then( res=>{
+                document.querySelector('.log').style.display = "none";
+                document.querySelector('.log>span').innerHTML = "";
+                loginForm.style.display = "block"
+            })
+        })
+    </script>
+</body>
+</html>
+<!-- 
+    cookie
+    session
+    jwt
+    json => db(monodb, mariadb)
+    MVC
+ -->
